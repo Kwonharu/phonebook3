@@ -102,6 +102,9 @@ public class PhonebookController extends HttpServlet {
 			PersonVo personVo = personDao.getPerson(Integer.parseInt(request.getParameter("id")));
 			
 			request.setAttribute("personVo", personVo);
+			//야 이거 굳이 안 담아줘도 jsp에서 getParameter로 쓸 수 있다 ㅋㅋ 내 시간 ㅋㅋㅋ
+			//setAttribute 할 거면 데이터의 변형 같은 게 있어야 하는데, 
+			//파라미터로 온 거 그대로 보낼 거면 굳이 어트리뷰트에 담을 이유가 없다.
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp"); //jsp파일 위치를 입력
 			rd.forward(request, response);

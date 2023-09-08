@@ -6,9 +6,12 @@
 <%@ page import="com.javaex.dao.PersonDao" %>
     
 <%
-
-	PersonVo personVo = (PersonVo)request.getAttribute("personVo");	
-
+	PersonDao personDao = new PersonDao();
+	PersonVo personVo = personDao.getPerson(Integer.parseInt(request.getParameter("id")));
+	//그냥 forward로 받은 거 getParameter로 쓰면 댐.
+	
+	PersonVo 이거왜받음ㅋㅋ = (PersonVo)request.getAttribute("personVo");	
+	
 %>
 
 <!DOCTYPE html>
@@ -27,7 +30,7 @@
 		이름(name): <input type="text" name="name" value="<%=personVo.getName()%>"><br>
 		핸드폰(hp): <input type="text" name="hp" value="<%=personVo.getHp()%>"><br>
 		회사(company): <input type="text" name="company" value="<%=personVo.getCompany()%>"><br>
-			<input type="hidden" name="id" value="<%=personVo.getPerson_id()%>"><br>
+		<input type="hidden" name="id" value="<%=personVo.getPerson_id()%>"><br>
 		<input type="hidden" name="action" value="update"><br>
 		
 		<button type="submit">수정</button>
